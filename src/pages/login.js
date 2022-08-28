@@ -1,17 +1,18 @@
 import { Link } from "react-router-dom";
 import { useFormik } from "formik";
 import { login } from "../firebase.js";
+import loginValidation  from "../validation/loginValidation";
 
 export default function Login() {
   const formik = useFormik({
     initialValues: {
-      email: "",
-      password: "",
+      email: "comeon@gmail.com",
+      password: "123456",
     },
     onSubmit: async (values) => {
-        await login(values.email, values.password)
-        console.log(values.email, values.password)
+        await login(values.email, values.password);
     },
+    validationSchema: loginValidation
   });
 
   return (
@@ -48,10 +49,12 @@ export default function Login() {
                 type="email"
                 // required={true} value={email} onChange={e => setEmail(e.target.value)}
                 onChange={formik.handleChange}
+                onBlur = {formik.handleBlur}
                 value={formik.values.email}
                 className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
                 placeholder="Email address"
               />
+              
             </div>
             <div>
               <label htmlFor="password" className="sr-only">Password</label>
@@ -61,11 +64,14 @@ export default function Login() {
                 type="password"
                 // required={true} value={password} onChange={e => setPassword(e.target.value)}
                 onChange={formik.handleChange}
+                onBlur = {formik.handleBlur}
                 value={formik.values.password}
                 className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
                 placeholder="Password"
               />
             </div>
+            {formik.errors.email && formik.touched.email && (<span className="flex items-center font-medium tracking-wide text-red-500 text-xs mt-1 ml-1">{formik.errors.email}</span>)}
+            {formik.errors.password && formik.touched.password &&  (<span className="flex items-center font-medium tracking-wide text-red-500 text-xs mt-1 ml-1">{formik.errors.password}</span>)}
           </div>
 
           <div className="flex items-center justify-between">
