@@ -14,7 +14,9 @@ export default function Login() {
     },
     onSubmit: async (values) => {
         const response = await login(values.email, values.password);
-        if(!response.user) setResponseMsg(response);
+        response.user ? setResponseMsg('') : setResponseMsg(response);
+        console.log(response)
+       
     },
     validationSchema: loginValidation
   });
