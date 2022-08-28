@@ -1,8 +1,11 @@
+import ProfileHeader from "../components/ProfileHeader"
+
 export default function Home() {
     return(
-        <div>
+        <>
+        <ProfileHeader/>
             Home Sayfası
-        </div>
+        </>
     )
 }
 

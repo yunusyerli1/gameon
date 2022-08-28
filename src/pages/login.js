@@ -7,19 +7,25 @@ import { useState } from "react";
 export default function Login() {
 
     const [ responseMsg, setResponseMsg] = useState('');
-  const formik = useFormik({
-    initialValues: {
-      email: "comeon@gmail.com",
-      password: "123456",
-    },
-    onSubmit: async (values) => {
-        const response = await login(values.email, values.password);
-        response.user ? setResponseMsg('') : setResponseMsg(response);
-        console.log(response)
-       
-    },
-    validationSchema: loginValidation
-  });
+
+    const formik = useFormik({
+        initialValues: {
+        email: "comeon@gmail.com",
+        password: "123456",
+        },
+        onSubmit: async (values) => {
+            const response = await login(values.email, values.password);
+            if(response.user) {
+                localStorage.setItem('user', JSON.stringify(response.user));
+                setResponseMsg('')
+            } else {
+                setResponseMsg(response);
+            }
+            console.log(response)
+        
+        },
+        validationSchema: loginValidation
+    });
 
   return (
     <div className="min-h-full flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
