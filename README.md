@@ -12,8 +12,8 @@ This project was made for Comeon Group.
 > - Firebase
 > - Formik
 > - Yup
-
-
+> - React Icons
+> - Classnames
 
 
 

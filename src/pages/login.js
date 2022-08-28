@@ -10,8 +10,8 @@ export default function Login() {
 
     const formik = useFormik({
         initialValues: {
-        email: "comeon@gmail.com",
-        password: "123456",
+        email: "",
+        password: "",
         },
         onSubmit: async (values) => {
             const response = await login(values.email, values.password);
@@ -59,7 +59,6 @@ export default function Login() {
                 id="email-address"
                 name="email"
                 type="email"
-                // required={true} value={email} onChange={e => setEmail(e.target.value)}
                 onChange={formik.handleChange}
                 onBlur = {formik.handleBlur}
                 value={formik.values.email}
@@ -74,7 +73,6 @@ export default function Login() {
                 id="password"
                 name="password"
                 type="password"
-                // required={true} value={password} onChange={e => setPassword(e.target.value)}
                 onChange={formik.handleChange}
                 onBlur = {formik.handleBlur}
                 value={formik.values.password}
@@ -105,7 +103,6 @@ export default function Login() {
 
           <div>
             <button type="submit" 
-            // disabled={!isButtonEnabled}
               className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-black hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
               <span className="absolute left-0 inset-y-0 flex items-center pl-3">
                 <svg className="h-5 w-5 text-white group-hover:text-indigo-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path fillRule="evenodd" d="M10 1a4.5 4.5 0 00-4.5 4.5V9H5a2 2 0 00-2 2v6a2 2 0 002 2h10a2 2 0 002-2v-6a2 2 0 00-2-2h-.5V5.5A4.5 4.5 0 0010 1zm3 8V5.5a3 3 0 10-6 0V9h6z" clipRule="evenodd"/></svg>
