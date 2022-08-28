@@ -1,14 +1,15 @@
 import { initializeApp } from "firebase/app";
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+import { USER_NOT_FOUND, PASSWORD_WRONG } from "./constants";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyAFq5q9xstYzZN8aD43hFHEonZUfBrK3_0",
-  authDomain: "comeon-fa149.firebaseapp.com",
-  projectId: "comeon-fa149",
-  storageBucket: "comeon-fa149.appspot.com",
-  messagingSenderId: "1008758418414",
-  appId: "1:1008758418414:web:963105a53ac88fc3217cff"
+  apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
+  authDomain: process.env.REACT_APP_FIREBASE_AUTH_DOMAIN,
+  projectId: process.env.REACT_APP_FIREBASE_PROJECT_ID,
+  storageBucket: process.env.REACT_APP_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: process.env.REACT_APP_FIREBASE_MESSAGING_SENDER_ID,
+  appId: process.env.REACT_APP_FIREBASE_APP_ID
 };
 
 // Initialize Firebase
@@ -18,11 +19,15 @@ const auth = getAuth();
 
 export const login = async (email, password) => {
     try{
-        const response = await signInWithEmailAndPassword(auth, email, password);
-        console.log(response.user)
+        return await signInWithEmailAndPassword(auth, email, password);
     } catch(err) {
-        //toast.error(err.code)
-        console.log(err.code)
+        if(err.code==='auth/user-not-found') {
+            return USER_NOT_FOUND;
+        }
+        if(err.code==='auth/wrong-password') {
+            return PASSWORD_WRONG;
+        }
+        return err.code
     }
 }
 

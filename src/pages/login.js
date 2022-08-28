@@ -2,15 +2,19 @@ import { Link } from "react-router-dom";
 import { useFormik } from "formik";
 import { login } from "../firebase.js";
 import loginValidation  from "../validation/loginValidation";
+import { useState } from "react";
 
 export default function Login() {
+
+    const [ responseMsg, setResponseMsg] = useState('');
   const formik = useFormik({
     initialValues: {
       email: "comeon@gmail.com",
       password: "123456",
     },
     onSubmit: async (values) => {
-        await login(values.email, values.password);
+        const response = await login(values.email, values.password);
+        if(!response.user) setResponseMsg(response);
     },
     validationSchema: loginValidation
   });
@@ -72,6 +76,7 @@ export default function Login() {
             </div>
             {formik.errors.email && formik.touched.email && (<span className="flex items-center font-medium tracking-wide text-red-500 text-xs mt-1 ml-1">{formik.errors.email}</span>)}
             {formik.errors.password && formik.touched.password &&  (<span className="flex items-center font-medium tracking-wide text-red-500 text-xs mt-1 ml-1">{formik.errors.password}</span>)}
+            { responseMsg && (<span className="flex items-center font-medium tracking-wide text-red-500 text-xs mt-1 ml-1">{responseMsg}</span>)}
           </div>
 
           <div className="flex items-center justify-between">
