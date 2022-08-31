@@ -9,11 +9,12 @@ This project was made for Comeon Group.
 ## Libraries That I Used
 
 > - TailwindCSS
-> - Firebase
 > - Formik
 > - Yup
 > - React Icons
 > - Classnames
+> - json-server
+> - axios
 
 
 

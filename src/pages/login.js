@@ -1,8 +1,8 @@
 import { Link } from "react-router-dom";
 import { useFormik } from "formik";
-import { login } from "../firebase.js";
 import loginValidation  from "../validation/loginValidation";
 import { useState } from "react";
+import axios from "axios";
 
 export default function Login() {
 
@@ -10,19 +10,24 @@ export default function Login() {
 
     const formik = useFormik({
         initialValues: {
-        email: "",
-        password: "",
+        username: "rebecka",
+        password: "secret",
         },
         onSubmit: async (values) => {
-            const response = await login(values.email, values.password);
-            if(response.user) {
-                localStorage.setItem('user', JSON.stringify(response.user));
-                setResponseMsg('')
-            } else {
-                setResponseMsg(response);
-            }
-            console.log(response)
-        
+          console.log(values)
+             try {
+                const { data }= await axios.post('http://localhost:3001/login', {
+                username:values.username,
+                password: values.password
+                });
+                console.log(data)
+                if(data.status === 'success') {
+                  localStorage.setItem('user', JSON.stringify(data.player));
+                  setResponseMsg('')
+                }
+             } catch (err) {
+                setResponseMsg(err.response.data.error);
+             }
         },
         validationSchema: loginValidation
     });
@@ -54,16 +59,16 @@ export default function Login() {
           <input type="hidden" name="remember" value="true" />
           <div className="rounded-md shadow-sm -space-y-px">
             <div>
-              <label htmlFor="email-address" className="sr-only">Email address</label>
+              <label htmlFor="username" className="sr-only">Username</label>
               <input
-                id="email-address"
-                name="email"
-                type="email"
+                id="username"
+                name="username"
+                type="text"
                 onChange={formik.handleChange}
                 onBlur = {formik.handleBlur}
-                value={formik.values.email}
+                value={formik.values.username}
                 className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
-                placeholder="Email address"
+                placeholder="Username"
               />
               
             </div>
@@ -80,7 +85,7 @@ export default function Login() {
                 placeholder="Password"
               />
             </div>
-            {formik.errors.email && formik.touched.email && (<span className="flex items-center font-medium tracking-wide text-red-500 text-xs mt-1 ml-1">{formik.errors.email}</span>)}
+            {formik.errors.username && formik.touched.username && (<span className="flex items-center font-medium tracking-wide text-red-500 text-xs mt-1 ml-1">{formik.errors.username}</span>)}
             {formik.errors.password && formik.touched.password &&  (<span className="flex items-center font-medium tracking-wide text-red-500 text-xs mt-1 ml-1">{formik.errors.password}</span>)}
             { responseMsg && (<span className="flex items-center font-medium tracking-wide text-red-500 text-xs mt-1 ml-1">{responseMsg}</span>)}
           </div>
