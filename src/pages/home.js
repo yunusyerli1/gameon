@@ -1,7 +1,9 @@
 import { useContext, useEffect } from "react";
 import {  useNavigate } from "react-router-dom";
-import ProfileHeader from "../components/ProfileHeader";
 import  AuthContext  from "../context/AuthProvider";
+import ProfileHeader from "../components/ProfileHeader";
+import GameList from "../components/GameList";
+import Sidebar from "../components/Sidebar";
 
 export default function Home() {
 
@@ -16,10 +18,19 @@ export default function Home() {
         }
       }, [navigate, setUser])
     return(
-        <>
-        <ProfileHeader/>
-            Home Sayfası
-        </>
+        <div className="relative bg-white">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6">
+                <div className="grid grid-cols-8 gap-4">
+                <header className="col-span-8">
+                    <ProfileHeader/>
+                </header>
+                    <div className="col-span-6"><GameList/></div>
+                    <div className="col-span-2"> <Sidebar/></div>
+                </div>
+                
+                   
+            </div>
+        </div>
     )
 }
 
