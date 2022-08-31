@@ -1,12 +1,23 @@
-import { Link } from "react-router-dom";
+import { useState, useContext, useEffect } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import axios from "axios";
 import { useFormik } from "formik";
 import loginValidation  from "../validation/loginValidation";
-import { useState } from "react";
-import axios from "axios";
+import  AuthContext  from "../context/AuthProvider";
 
 export default function Login() {
 
-    const [ responseMsg, setResponseMsg] = useState('');
+    const { setUser } = useContext(AuthContext);  
+    const [ errMsg, setErrMsg] = useState('');
+    let navigate = useNavigate();
+
+    useEffect(() => {
+      const storedUser = localStorage.getItem('user');
+      if(storedUser) {
+        setUser(JSON.parse(storedUser));
+        navigate('/');
+      }
+    }, [navigate, setUser])
 
     const formik = useFormik({
         initialValues: {
@@ -22,11 +33,14 @@ export default function Login() {
                 });
                 console.log(data)
                 if(data.status === 'success') {
+                  setUser(data.player)
                   localStorage.setItem('user', JSON.stringify(data.player));
-                  setResponseMsg('')
+                  setErrMsg('');
+                  navigate('/');
                 }
              } catch (err) {
-                setResponseMsg(err.response.data.error);
+                if(err.response.data.error) setErrMsg(err.response.data.error);
+                else setErrMsg('Login Failed')
              }
         },
         validationSchema: loginValidation
@@ -87,7 +101,7 @@ export default function Login() {
             </div>
             {formik.errors.username && formik.touched.username && (<span className="flex items-center font-medium tracking-wide text-red-500 text-xs mt-1 ml-1">{formik.errors.username}</span>)}
             {formik.errors.password && formik.touched.password &&  (<span className="flex items-center font-medium tracking-wide text-red-500 text-xs mt-1 ml-1">{formik.errors.password}</span>)}
-            { responseMsg && (<span className="flex items-center font-medium tracking-wide text-red-500 text-xs mt-1 ml-1">{responseMsg}</span>)}
+            { errMsg && (<span className="flex items-center font-medium tracking-wide text-red-500 text-xs mt-1 ml-1">{errMsg}</span>)}
           </div>
 
           <div className="flex items-center justify-between">

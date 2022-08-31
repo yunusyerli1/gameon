@@ -1,17 +1,23 @@
+import { useContext } from "react";
+import  AuthContext  from "../context/AuthProvider";
 import Search  from "./Search";
 import { FaAngleLeft } from "react-icons/fa";
 
 export default function ProfileHeader() {
+
+    const { user } = useContext(AuthContext);
+    console.log(user)
+
     return(
         <div className="relative bg-white">
             <div className="max-w-7xl mx-auto px-4 sm:px-6">
                 <div className="flex justify-between items-center border-b-2 border-gray-100 py-6 md:justify-start md:space-x-10">
                         <div className=" flex flex-col gap-y-3.5">
                             <div className="flex  justify-start">
-                                <img className="inline-block h-10 w-10 rounded-full ring-2 ring-white" src="https://images.unsplash.com/photo-1550525811-e5869dd03032?ixlib=rb-1.2.1&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt=""/>
+                                <img className="inline-block h-10 w-10 rounded-full ring-2 ring-white" src={user.avatar} alt=""/>
                                 <div className="ml-2 flex-auto">
-                                    <div className="font-bold text-sm">Eric Beard</div>
-                                    <div className="text-sm">I saw you won 500 SEK last time!</div>
+                                    <div className="font-bold text-sm">{user.name}</div>
+                                    <div className="text-sm">{user.event}</div>
                                 </div>
                             </div>
                             <div>
@@ -20,9 +26,6 @@ export default function ProfileHeader() {
                             </div>
                         </div>
                         
-                        
-                 
-
 
                     <div className="hidden md:flex items-center justify-end md:flex-1 lg:w-0">
                         <Search/>
