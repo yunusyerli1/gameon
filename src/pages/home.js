@@ -6,8 +6,7 @@ import  AuthContext  from "../context/AuthProvider";
 export default function Home() {
 
     let navigate = useNavigate();
-    const { user, setUser } = useContext(AuthContext);
-    console.log(user)
+    const { setUser } = useContext(AuthContext);
 
     useEffect(() => {
         const storedUser = localStorage.getItem('user');

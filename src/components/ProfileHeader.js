@@ -10,14 +10,11 @@ export default function ProfileHeader() {
     let navigate = useNavigate();
 
     const { user, setUser } = useContext(AuthContext);
-    console.log(user) 
-
     const handleLogout = async ()  => {
             const firstName = user.name.split(' ')[0];
             const response = await axios.post('http://localhost:3001/logout',{
                 username: firstName.toLowerCase()
             });
-            console.log("logout",response)
             if(response.status === 200) {
                 setUser({});
                 localStorage.removeItem('user');

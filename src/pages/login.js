@@ -25,13 +25,11 @@ export default function Login() {
         password: "secret",
         },
         onSubmit: async (values) => {
-          console.log(values)
              try {
                 const { data }= await axios.post('http://localhost:3001/login', {
                 username:values.username,
                 password: values.password
                 });
-                console.log(data)
                 if(data.status === 'success') {
                   setUser(data.player)
                   localStorage.setItem('user', JSON.stringify(data.player));
