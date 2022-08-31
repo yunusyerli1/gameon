@@ -1,12 +1,29 @@
 import { useContext } from "react";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
 import  AuthContext  from "../context/AuthProvider";
 import Search  from "./Search";
 import { FaAngleLeft } from "react-icons/fa";
 
 export default function ProfileHeader() {
 
-    const { user } = useContext(AuthContext);
-    console.log(user)
+    let navigate = useNavigate();
+
+    const { user, setUser } = useContext(AuthContext);
+    console.log(user) 
+
+    const handleLogout = async ()  => {
+            const firstName = user.name.split(' ')[0];
+            const response = await axios.post('http://localhost:3001/logout',{
+                username: firstName.toLowerCase()
+            });
+            console.log("logout",response)
+            if(response.status === 200) {
+                setUser({});
+                localStorage.removeItem('user');
+                navigate('/login');
+            }
+    }
 
     return(
         <div className="relative bg-white">
@@ -21,7 +38,7 @@ export default function ProfileHeader() {
                                 </div>
                             </div>
                             <div>
-                            <button className="flex justify-center items-center  gap-x-2 text-white bg-black hover:bg-blue-700  font-bold py-1 px-4 rounded">
+                            <button onClick={handleLogout} className="flex justify-center items-center  gap-x-2 text-white bg-black hover:bg-blue-700  font-bold py-1 px-4 rounded">
                                 <FaAngleLeft size={20} />Log Out</button>
                             </div>
                         </div>
