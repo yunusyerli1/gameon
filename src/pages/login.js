@@ -21,8 +21,8 @@ export default function Login() {
 
     const formik = useFormik({
         initialValues: {
-        username: "rebecka",
-        password: "secret",
+        username: "",
+        password: "",
         },
         onSubmit: async (values) => {
              try {

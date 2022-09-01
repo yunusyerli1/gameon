@@ -9,7 +9,7 @@ export default function Search() {
 	const [open, setOpen] = useState(false)
 
 	return (
-		<div className="w-[268px] relative">
+		<div className="w-full sm:w-[268px] relative">
 			
 			<input onFocus={() => setOpen(true)} onBlur={() => setOpen(false)} type="text" placeholder="Search Game" className="h-9 outline-none pl-3 w-full rounded bg-[#efefef] placeholder:text-sm"/>
 			<button onClick={() => setOpen(false)} className={classNames({

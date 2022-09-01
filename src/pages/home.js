@@ -21,11 +21,11 @@ export default function Home() {
         <div className="relative bg-white">
             <div className="max-w-7xl mx-auto px-4 sm:px-6">
                 <div className="grid grid-cols-8 gap-4">
-                <header className="col-span-8">
-                    <ProfileHeader/>
-                </header>
-                    <div className="col-span-6"><GameList/></div>
-                    <div className="col-span-2"> <Sidebar/></div>
+                    <header className="col-span-8">
+                        <ProfileHeader/>
+                    </header>
+                        <div className="col-span-8 md:col-span-6"><GameList/></div>
+                        <div className="col-span-0 md:col-span-2"> <Sidebar/></div>
                 </div>
                 
                    

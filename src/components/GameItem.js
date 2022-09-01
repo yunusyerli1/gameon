@@ -10,7 +10,7 @@ export default function GameItem({game}) {
 	return (
         <div>
             <div id="game-launch" className="absolute left-auto lg:left-1/4"></div>
-            <div className="flex flex-col items-center bg-white md:flex-row  border-b-2 border-gray-100 ">
+            <div className="flex flex-col items-center bg-white md:flex-row mt-4 md:mt-0  border-b-2 border-gray-100 ">
                 <img className="object-contain w-full h-40 md:w-48" src={game.icon} alt=""/>
                 <div className="flex flex-col justify-between p-4 leading-normal">
                     <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{game.name}</h5>
