@@ -16,7 +16,7 @@ export default function GameItem({game}) {
                     <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{game.name}</h5>
                     <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">{game.description}</p>
                     <div className="flex  justify-end ">
-                        <button onClick={()=>playGame(game.code)} className="flex items-center gap-x-2 text-white bg-black hover:bg-blue-700  font-bold py-1 px-4" >Play <FaAngleRight size={22} /></button>
+                        <button onClick={()=>playGame(game.code)} className="flex items-center gap-x-2 text-white bg-black hover:bg-blue-700  font-bold py-1 px-4">Play<FaAngleRight size={22} /></button>
                     </div>
                 </div>
                 

@@ -5,11 +5,12 @@ import  AuthContext  from "../context/AuthProvider";
 import Search  from "./Search";
 import { FaAngleLeft } from "react-icons/fa";
 
-export default function ProfileHeader() {
+export default function ProfileHeader({searchQueryHome}) {
 
     let navigate = useNavigate();
 
     const { user, setUser } = useContext(AuthContext);
+
     const handleLogout = async ()  => {
             const firstName = user.name.split(' ')[0];
             const response = await axios.post('http://localhost:3001/logout',{
@@ -20,6 +21,10 @@ export default function ProfileHeader() {
                 localStorage.removeItem('user');
                 navigate('/login');
             }
+    }
+
+    const searchQuery = (term) => {
+        searchQueryHome(term)
     }
 
     return(
@@ -38,7 +43,7 @@ export default function ProfileHeader() {
                 </div>
             </div>
             <div className="sm:flex items-center justify-end w-full mt-8 sm:mt-0 sm:flex-1 lg:w-0">
-                <Search/>
+                <Search searchQuery={searchQuery}/>
             </div>
         </div>
 
