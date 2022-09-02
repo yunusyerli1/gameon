@@ -5,6 +5,7 @@ This project was made for Comeon Group.
 ## To Start The Project
 
 ### `npm run start`
+### `json-server --watch mock/mock-data.json --port 3001 --middlewares mock/mock-api.js`
 
 ## Libraries That I Used
 
