@@ -6,8 +6,8 @@ import { BiSearch } from "react-icons/bi";
 
 export default function Search() {
 
-	const [open, setOpen] = useState(false)
-
+	const [open, setOpen] = useState(false);
+	
 	return (
 		<div className="w-full sm:w-[268px] relative">
 			

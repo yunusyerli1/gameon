@@ -1,20 +1,15 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
-import { Link } from "react-router-dom";
 
-export default function Sidebar() {
+export default function Sidebar({filterCategory}) {
 
     const [categories, setCategories ] = useState([]);
 
-    const filterCategory = (categoryId) => {
-        console.log(categoryId)
-
-    }
+  
 
     const getCategories = async () => {
         const { data } = await axios.get(` http://localhost:3001/categories`);
         setCategories(data);
-        console.log("categories",data)
       };
 
     useEffect(() => {
