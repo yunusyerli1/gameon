@@ -1,6 +1,6 @@
 # Comeon React Project
 
-This project was made for Comeon Group.
+This project is a React App.
 
 ## To Start The Project
 
