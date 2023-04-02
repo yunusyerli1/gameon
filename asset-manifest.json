@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/gameon/static/css/main.e64cc737.css",
+    "main.js": "/gameon/static/js/main.40679809.js",
+    "index.html": "/gameon/index.html",
+    "main.e64cc737.css.map": "/gameon/static/css/main.e64cc737.css.map",
+    "main.40679809.js.map": "/gameon/static/js/main.40679809.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.e64cc737.css",
+    "static/js/main.40679809.js"
+  ]
+}
