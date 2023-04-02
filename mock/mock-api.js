@@ -17,6 +17,12 @@ const players = {
         "avatar": "images/avatar/stoffe.jpg",
         "event": "Your are a rock star",
         "password": "rock"
+    },
+    "admin": {
+        "name": "Admin",
+        "avatar": "images/avatar/stoffe.jpg",
+        "event": "I am the King",
+        "password": "admin"
     }
 };
 
