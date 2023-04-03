@@ -23,13 +23,13 @@ In this project, there are few games to play. So, users need to login to play th
 
 ## Built With
 
-> - TailwindCSS
-> - Formik
-> - Yup
-> - React Icons
-> - Classnames
-> - json-server
-> - axios
+- TailwindCSS
+- Formik
+- Yup
+- React Icons
+- Classnames
+- json-server
+- axios
 
 This project is a React App.
 
