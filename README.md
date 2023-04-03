@@ -23,6 +23,7 @@ In this project, there are few games to play. So, users need to login to play th
 
 ## Built With
 
+- React
 - TailwindCSS
 - Formik
 - Yup
@@ -31,7 +32,26 @@ In this project, there are few games to play. So, users need to login to play th
 - json-server
 - axios
 
-This project is a React App.
+
+
+
+## Usage
+
+> Clone the repository to your local machine
+
+```sh
+$ git clone https://github.com/Yunusyerli1/gameon.git
+```
+
+> cd into the directory, install dependencies, build and start
+
+```sh
+$ cd seasons
+$ npm install
+$ json-server --watch mock/mock-data.json --port 3001 --middlewares mock/mock-api.js
+$ npm run start
+```
+
 
 ## To Start The Project
 
