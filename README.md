@@ -46,30 +46,30 @@ $ git clone https://github.com/Yunusyerli1/gameon.git
 > cd into the directory, install dependencies, build and start
 
 ```sh
-$ cd seasons
 $ npm install
 $ json-server --watch mock/mock-data.json --port 3001 --middlewares mock/mock-api.js
 $ npm run start
 ```
 
+> Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-## To Start The Project
+## Authors
 
-### `npm run start`
-### `json-server --watch mock/mock-data.json --port 3001 --middlewares mock/mock-api.js`
+👤 **Yunus YERLİ**
 
-## Libraries That I Used
+- Github: [@yunusyerli1](https://github.com/Yunusyerli1)
+- Twitter: [@angularious](https://twitter.com/angularious)
 
-> - TailwindCSS
-> - Formik
-> - Yup
-> - React Icons
-> - Classnames
-> - json-server
-> - axios
+## 🤝 Contributing
 
+Contributions, issues and feature requests are welcome!<br />Feel free to check [issues page](https://github.com/Yunusyerli1/gameon/issues).
 
+1. Fork it (https://github.com/Yunusyerli1/gameon.git/fork)
+2. Create your working branch (git checkout -b [choose-a-name])
+3. Commit your changes (git commit -am 'what this commit will fix/add/improve')
+4. Push to the branch (git push origin [chosen-name])
+5. Create a new Pull Request
 
-**Note: React essential libraries has not been listed**
+## Show your support
 
-Prepared by Yunus Yerli
+Give a ⭐️ if you like this project!
