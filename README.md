@@ -7,7 +7,7 @@
   <a href="https://github.com/yunusyerli1/gameon/blob/master/gameon" target="_blank">
     <img alt="Maintenance" src="https://img.shields.io/badge/Maintained%3F-yes-green.svg" />
   </a>
-  <a href="https://twitter.com/cmk_y" target="_blank">
+  <a href="https://twitter.com/angularious" target="_blank">
     <img alt="Twitter: angularious" src="https://img.shields.io/twitter/url?style=social&url=https%3A%2F%2Ftwitter.com%2Fangularious" />
   </a>
   <a href="https://github.com/yunusyerli1/gameon" target="_blank">
